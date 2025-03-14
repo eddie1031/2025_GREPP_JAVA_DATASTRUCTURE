@@ -35,11 +35,9 @@ public class LinkedList<E> implements List<E> {
             tail = newNode;
             head = newNode;
         } else {
-            if ( tail != null ) {
-                newNode.prev = tail;
-                tail.next = newNode;
-                tail = newNode;
-            }
+            newNode.prev = tail;
+            tail.next = newNode;
+            tail = newNode;
         }
 
         size++;
