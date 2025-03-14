@@ -49,7 +49,7 @@ public class LinkedList<E> implements List<E> {
     @Override
     public void add(int index, E e) {
 
-        if ( index < 0 || index > size ) {
+        if ( index < 0 || index >= size ) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -58,7 +58,7 @@ public class LinkedList<E> implements List<E> {
             return;
         }
 
-        if ( index == size ) {
+        if ( index == (size - 1) ) {
             addLast(e);
             return;
         }
@@ -85,7 +85,7 @@ public class LinkedList<E> implements List<E> {
     @Override
     public E get(int index) {
 
-        if ( index < 0 || index > size ) {
+        if ( index < 0 || index >= size ) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -106,29 +106,134 @@ public class LinkedList<E> implements List<E> {
 
         E removedData = head.data;
 
+        if ( head.next != null ) {
+            head.next.prev = null;
+            head = head.next;
+        } else {
+            head = null;
+            tail = null;
+        }
 
-
+        size--;
 
         return removedData;
     }
 
+    public E removeLast() {
+
+        if( isEmpty() ) {
+            throw new RuntimeException("Linked list is empty");
+        }
+
+        E removedData = tail.data;
+
+        if ( tail.prev != null ) {
+            tail.prev.next = null;
+            tail = tail.prev;
+        } else {
+            tail = null;
+            head = null;
+        }
+
+        size--;
+
+        return removedData;
+
+    }
+
     @Override
     public E remove(int index) {
-        return null;
+
+        if ( index < 0 || index >= size ) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if ( index == 0 ) {
+            return removeFirst();
+        }
+
+        if ( index == (size - 1) ) {
+            return removeLast();
+        }
+
+        Node<E> cur = head;
+
+        for ( int i = 0; i < index; i++ ) {
+            cur = cur.next;
+        }
+
+        cur.prev.next = cur.next;
+        cur.next.prev = cur.prev;
+
+        size--;
+
+        return cur.data;
     }
 
     @Override
     public E set(int index, E e) {
-        return null;
+
+        if ( index < 0 || index >= size ) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if ( isEmpty() ) {
+            throw new RuntimeException("Linked list is empty");
+        }
+
+        if ( index == 0 ) {
+            head.data = e;
+            return e;
+        }
+
+        if ( index == (size - 1) ) {
+            tail.data = e;
+            return e;
+        }
+
+        Node<E> cur = head;
+        for ( int i = 0; i < index; i++ ) {
+            cur = cur.next;
+        }
+
+        cur.data = e;
+
+        return e;
     }
 
     @Override
     public void add(E e) {
-
+        addLast(e);
     }
 
     @Override
     public void remove(E e) {
+
+        if ( isEmpty() ) {
+            throw new RuntimeException("Linked list is empty");
+        }
+
+        Node<E> cur = head;
+        while ( cur != null ) {
+
+            if ( cur.data.equals(e) ) {
+
+                if ( cur == head ) {
+                    removeFirst();
+                } else if ( cur == tail ) {
+                    removeLast();
+                } else {
+                    cur.prev.next = cur.next;
+                    cur.next.prev = cur.prev;
+                }
+
+                size--;
+                return;
+
+            }
+
+            cur = cur.next;
+        }
 
     }
 
@@ -144,7 +249,41 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean contains(E e) {
+
+        if ( isEmpty() ) {
+            return false;
+        }
+
+        Node<E> cur = head;
+
+        while (cur != null) {
+
+            if ( cur.data.equals(e) ) {
+                return true;
+            }
+
+            cur = cur.next;
+        }
+
         return false;
+    }
+
+    public void traverse() {
+
+        if ( isEmpty() ) {
+            System.out.println("자료구조가 비어있습니다!");
+            return;
+        }
+
+        Node<E> cur = head;
+
+        while (cur != null) {
+            System.out.print(cur.data + " ");
+            cur = cur.next;
+        }
+
+        System.out.println();
+
     }
 
     private static class Node<E> {
