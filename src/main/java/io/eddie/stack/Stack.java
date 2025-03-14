@@ -1,9 +1,8 @@
 package io.eddie.stack;
 
-import io.eddie.arrayList.List;
-import io.eddie.linkedList.LinkedList;
+import io.eddie.Collection;
 
-public class Stack<E> implements List<E> {
+public class Stack<E> implements Collection<E> {
 
     private Object[] elements = {};
 
@@ -36,47 +35,51 @@ public class Stack<E> implements List<E> {
 
     }
 
-
-    @Override
-    public void add(int index, E e) {
-    }
-
-    @Override
-    public E get(int index) {
-        return null;
-    }
-
-    @Override
-    public E remove(int index) {
-        return null;
-    }
-
-    @Override
-    public E set(int index, E e) {
-        return null;
+    @SuppressWarnings("all")
+    public E top() {
+        return (E) elements[elements.length - 1];
     }
 
     @Override
     public void add(E e) {
+        push(e);
     }
 
     @Override
     public void remove(E e) {
-
+        if ( top().equals(e)) {
+            pop();
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return elements.length == 0;
     }
 
     @Override
     public int size() {
-        return 0;
+        return elements.length;
+    }
+
+    public void print() {
+        for (Object element : elements) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
     }
 
     @Override
     public boolean contains(E e) {
+
+        for ( int i = 0; i < elements.length; i++ ) {
+            if ( elements[i].equals(e) ) {
+                return true;
+            }
+        }
+
         return false;
+
     }
+
 }
