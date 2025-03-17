@@ -31,6 +31,13 @@ public class LinkedListTest {
         list.addLast("샤인머스켓");
         list.traverse();
 
+//        for ( String s : list ) {
+//            System.out.println(s);
+//        }
+        for (String el : list) {
+            System.out.println("el = " + el);
+        }
+
         System.out.println();
 
         System.out.println("2번 인덱스의 값을 삭제합니다.");

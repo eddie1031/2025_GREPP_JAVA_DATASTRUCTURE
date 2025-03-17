@@ -305,7 +305,26 @@ public class LinkedList<E> implements List<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<E> {
+
+        private Node<E> cur = head;
+
+        @Override
+        public boolean hasNext() {
+            return cur != null;
+        }
+
+        @Override
+        public E next() {
+
+            E data = cur.data;
+            cur = cur.next;
+
+            return data;
+        }
     }
 
 }
