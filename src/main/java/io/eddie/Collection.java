@@ -1,5 +1,7 @@
 package io.eddie;
 
+import io.eddie.stream.Stream;
+
 public interface Collection<E> extends Iterable<E> {
 
     void add(E e);
@@ -11,5 +13,7 @@ public interface Collection<E> extends Iterable<E> {
     int size();
 
     boolean contains(E e);
+
+    Stream<E> stream();
 
 }

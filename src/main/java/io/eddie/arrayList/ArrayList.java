@@ -1,5 +1,8 @@
 package io.eddie.arrayList;
 
+import io.eddie.stream.ListStream;
+import io.eddie.stream.Stream;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -163,6 +166,11 @@ public class ArrayList<E> implements List<E> {
             return (E) elements[curIdx++];
         }
 
+    }
+
+    @Override
+    public Stream<E> stream() {
+        return new ListStream<>(this);
     }
 
 }

@@ -1,5 +1,7 @@
 package io.eddie.arrayList;
 
+import io.eddie.stream.Stream;
+
 public class ArrayListTest {
 
     public static void main(String[] args) {

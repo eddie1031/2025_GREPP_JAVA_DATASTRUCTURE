@@ -1,6 +1,7 @@
 package io.eddie.stack;
 
 import io.eddie.Collection;
+import io.eddie.stream.Stream;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -114,4 +115,8 @@ public class Stack<E> implements Collection<E> {
         }
     }
 
+    @Override
+    public Stream<E> stream() {
+        return null;
+    }
 }
