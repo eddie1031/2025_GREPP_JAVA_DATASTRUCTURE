@@ -2,6 +2,8 @@ package io.eddie.linkedList;
 
 import io.eddie.arrayList.List;
 
+import java.util.Iterator;
+
 public class LinkedList<E> implements List<E> {
 
     private Node<E> head;
@@ -294,6 +296,16 @@ public class LinkedList<E> implements List<E> {
             this.data = data;
         }
 
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 
 }

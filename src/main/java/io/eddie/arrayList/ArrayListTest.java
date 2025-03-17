@@ -12,6 +12,10 @@ public class ArrayListTest {
         list.add("3");
         list.add("4");
 
+        for ( String s : list ) {
+            System.out.println("s = " + s);
+        }
+
         list.print();
         System.out.println();
 

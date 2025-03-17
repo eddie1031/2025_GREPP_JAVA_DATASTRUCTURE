@@ -2,6 +2,8 @@ package io.eddie.stack;
 
 import io.eddie.Collection;
 
+import java.util.Iterator;
+
 public class Stack<E> implements Collection<E> {
 
     private Object[] elements = {};
@@ -82,4 +84,13 @@ public class Stack<E> implements Collection<E> {
 
     }
 
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
 }

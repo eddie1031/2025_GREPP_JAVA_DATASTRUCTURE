@@ -1,5 +1,8 @@
 package io.eddie.arrayList;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class ArrayList<E> implements List<E> {
 
     private Object[] elements = {};
@@ -119,6 +122,47 @@ public class ArrayList<E> implements List<E> {
             System.out.print(elements[i] + " ");
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ListIterator();
+    }
+
+    private class ListIterator implements Iterator<E> {
+
+        // current index
+        private int curIdx = 0;
+
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+            return curIdx < elements.length;
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        @SuppressWarnings("all")
+        public E next() {
+
+            if ( !hasNext() ) {
+                throw new NoSuchElementException();
+            }
+
+            return (E) elements[curIdx++];
+        }
+
     }
 
 }

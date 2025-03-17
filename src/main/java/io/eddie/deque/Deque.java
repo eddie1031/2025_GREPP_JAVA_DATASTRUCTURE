@@ -3,6 +3,8 @@ package io.eddie.deque;
 import io.eddie.Collection;
 import io.eddie.linkedList.LinkedList;
 
+import java.util.Iterator;
+
 public class Deque<E> implements Collection<E> {
 
     private final LinkedList<E> elements;
@@ -80,4 +82,13 @@ public class Deque<E> implements Collection<E> {
         this.elements.traverse();
     }
 
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
 }
