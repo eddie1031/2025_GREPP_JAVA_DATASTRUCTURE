@@ -3,6 +3,7 @@ package io.eddie.stack;
 import io.eddie.Collection;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Stack<E> implements Collection<E> {
 
@@ -91,6 +92,26 @@ public class Stack<E> implements Collection<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new StackIterator();
     }
+
+    private class StackIterator implements Iterator<E> {
+
+        private int curIdx = elements.length - 1;
+
+        @Override
+        public boolean hasNext() {
+            return curIdx >= 0;
+        }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public E next() {
+            if ( !hasNext() ) {
+                throw new NoSuchElementException();
+            }
+            return (E) elements[curIdx--];
+        }
+    }
+
 }

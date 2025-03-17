@@ -15,6 +15,10 @@ public class StackTest {
 
         System.out.println();
 
+        for (String s : stack) {
+            System.out.println("s = " + s);
+        }
+
         System.out.println("스택에서 값 하나 꺼내기");
         stack.pop();
         stack.print();

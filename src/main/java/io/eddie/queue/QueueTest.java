@@ -15,6 +15,11 @@ public class QueueTest {
         Q.print();
 
         System.out.println();
+
+        for (String s : Q) {
+            System.out.println("s = " + s);
+        }
+
         // 큐에서 값을 제거
         System.out.println("큐에서 값을 제거");
         Q.poll();

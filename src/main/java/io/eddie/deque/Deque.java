@@ -89,6 +89,6 @@ public class Deque<E> implements Collection<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return elements.iterator();
     }
 }

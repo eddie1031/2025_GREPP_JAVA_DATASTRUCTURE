@@ -14,6 +14,10 @@ public class DequeTest {
         DQ.offer("금귤");
         DQ.print();
 
+        for (String s : DQ) {
+            System.out.println("s = " + s);
+        }
+
         System.out.println();
         // 덱에서 값을 제거
         System.out.println("큐에서 값을 제거");
