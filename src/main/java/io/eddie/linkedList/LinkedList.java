@@ -1,6 +1,7 @@
 package io.eddie.linkedList;
 
 import io.eddie.arrayList.List;
+import io.eddie.stream.ListStream;
 import io.eddie.stream.Stream;
 
 import java.util.Iterator;
@@ -330,6 +331,6 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public Stream<E> stream() {
-        return null;
+        return new ListStream<>(this);
     }
 }

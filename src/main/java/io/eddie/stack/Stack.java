@@ -1,6 +1,7 @@
 package io.eddie.stack;
 
 import io.eddie.Collection;
+import io.eddie.stream.StackStream;
 import io.eddie.stream.Stream;
 
 import java.util.Iterator;
@@ -117,6 +118,6 @@ public class Stack<E> implements Collection<E> {
 
     @Override
     public Stream<E> stream() {
-        return null;
+        return new StackStream<>(this);
     }
 }

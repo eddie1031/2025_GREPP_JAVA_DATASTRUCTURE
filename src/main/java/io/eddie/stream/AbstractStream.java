@@ -3,6 +3,8 @@ package io.eddie.stream;
 import io.eddie.Collection;
 import io.eddie.arrayList.ArrayList;
 import io.eddie.linkedList.LinkedList;
+import io.eddie.queue.Queue;
+import io.eddie.stack.Stack;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
@@ -29,8 +31,12 @@ public abstract class AbstractStream<T> implements Stream<T>{
 
     protected <R> Collection<R> getCollection() {
 
-        if ( this.collection instanceof LinkedList<T> ) {
+        if ( this.collection instanceof LinkedList<?> ) {
             return new LinkedList<>();
+        } else if ( this.collection instanceof Stack<?> ) {
+            return new Stack<>();
+        } else if ( this.collection instanceof Queue<T>) {
+            return new Queue<>();
         }
 
         return new ArrayList<>();

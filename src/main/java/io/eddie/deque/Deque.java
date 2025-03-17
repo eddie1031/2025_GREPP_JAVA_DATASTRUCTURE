@@ -2,6 +2,7 @@ package io.eddie.deque;
 
 import io.eddie.Collection;
 import io.eddie.linkedList.LinkedList;
+import io.eddie.stream.QueueStream;
 import io.eddie.stream.Stream;
 
 import java.util.Iterator;
@@ -95,6 +96,6 @@ public class Deque<E> implements Collection<E> {
 
     @Override
     public Stream<E> stream() {
-        return null;
+        return new QueueStream<>(this);
     }
 }
